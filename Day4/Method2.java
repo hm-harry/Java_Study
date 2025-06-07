@@ -6,6 +6,6 @@ class Method2 {
         bbq();
     }
     public static void bbq() {
-        System.out.println("bbq method001");
+        System.out.println("bbq method");
     }
 }
