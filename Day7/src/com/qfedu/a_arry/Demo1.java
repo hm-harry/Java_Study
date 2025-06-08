@@ -1,4 +1,4 @@
-package com.qfedu;
+package com.qfedu.a_arry;
 
 public class Demo1 {
     /**
