@@ -5,6 +5,6 @@ class Demo3 {
         System.out.println(ch);
 
         // System.out.println("²âÊÔ\t²âÊÔ");
-        System.out.println("hello world");
+        System.out.println("hello world!");
     }
 }
