@@ -4,7 +4,7 @@ class Demo3 {
 
         System.out.println(ch);
 
-        // System.out.println("²âÊÔ\t²âÊÔ");
-        System.out.println("²âÊÔ\\\\²âÊÔ");
+        // System.out.println("Â²Ã¢ÃŠÃ”\tÂ²Ã¢ÃŠÃ”");
+        System.out.println("hello world");
     }
 }
