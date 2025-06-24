@@ -16,7 +16,7 @@ public class StudentManager {
     /**
      * 默认容量
      */
-    private static final int DEFAULT_CAPACITY = 1;
+    private static final int DEFAULT_CAPACITY = 10;
 
     /**
      * 数组中实际存储的元素个数
@@ -45,14 +45,76 @@ public class StudentManager {
     // 添加学生信息的方法
     public boolean add(Student student) {
         // 存储数据到数组的末尾
-        if(size == allStus.length) {
+        add(size, student);
+        return true;
+    }
+
+
+    /**
+     * 插入学生信息到指定位置
+     * @param index 要插入的位置
+     * @param student 要插入的学生信息
+     * @return 插入成功返回true，插入失败返回false
+     * @author 2024/8/24 10:47
+     * */
+    public boolean add(int index, Student student) {
+        if (index < 0 || index > size) {
+            System.out.println("Input index is out of range");
+            return false;
+        }
+        
+        if (size == allStus.length) {
             // 扩容数组
             grow(size + 1);
         }
-        allStus[size] = student;
+
+        for (int i = size; i > index; i--) {
+            allStus[i] = allStus[i - 1];
+        }
+
+        allStus[index] = student;
         size++;
         return true;
     }
+
+    /**
+     * 根据id删除学生信息
+     * @param id 要删除的学生的id
+     * @return 删除成功返回被删除的学生信息，删除失败返回null
+     * 
+     */
+    public Student remove(int id) {
+        if (id < 0) {
+            System.out.println("Input id is out of range");
+            return null;    
+        }
+
+        // 查找要删除的学生信息
+        int index = -1;
+
+        // 遍历数组，找到要删除的学生信息的索引
+        for (int i = 0; i < size; i++) {
+            if (allStus[i].getId() == id) {
+                index = i;
+                break;
+            }
+        }
+
+        Student stu = null;
+        if (index >= 0) {
+            // 保存要删除的学生信息
+            stu = allStus[index];
+            // 移动数组元素，将删除的学生信息后面的元素向前移动一位
+            for (int i = index; i < size - 1; i++) {
+                allStus[i] = allStus[i + 1];
+            }
+            allStus[size - 1] = null;
+            size--;
+        }
+        
+        return stu;
+    }
+
 
     /**
      * 展示所有学生信息

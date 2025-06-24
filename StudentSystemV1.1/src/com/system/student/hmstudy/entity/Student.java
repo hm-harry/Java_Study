@@ -13,7 +13,7 @@ public class Student {
     private int rank;
 
     // 类对象计数器
-    private static int count = 10;
+    private static int count = 0;
 
     // 构造代码块
     {
@@ -113,6 +113,7 @@ public class Student {
         this.rank = rank;
     }
 
+    // 重写toString方法
     @Override
     public String toString() {
         return "Student [id=" + id + ", name=" + name + ", age=" + age + ", gender=" + gender + ", mathScore="
