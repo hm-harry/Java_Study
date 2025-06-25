@@ -64,4 +64,51 @@ public class SystemTest {
 
         studentManager.show();
     }
+
+    @Test
+    public void testModify() {
+        StudentManager studentManager = new StudentManager();
+
+        Student student1 = new Student("张三", 18, '男', 80, 90, 100);
+        Student student2 = new Student("李四", 19, '女', 81, 91, 101);
+        Student student3 = new Student("王五", 20, '男', 82, 92, 102);
+
+        studentManager.add(student1);
+        studentManager.add(student2);
+        studentManager.add(student3);
+
+        studentManager.modify(2);
+
+        studentManager.show();
+    }
+
+    @Test
+    public void testGet() {
+        StudentManager studentManager = new StudentManager();
+
+        Student student1 = new Student("张三", 18, '男', 80, 90, 100);
+        Student student2 = new Student("李四", 19, '女', 81, 91, 101);
+        Student student3 = new Student("王五", 20, '男', 82, 92, 102);
+
+        studentManager.add(student1);
+        studentManager.add(student2);
+        studentManager.add(student3);
+
+        System.out.println(studentManager.get(2));
+    }
+
+    @Test
+    public void testSort() {
+        StudentManager studentManager = new StudentManager();
+
+        Student student1 = new Student("张三", 52, '男', 80, 90, 100);
+        Student student2 = new Student("李四", 19, '女', 81, 91, 101);
+        Student student3 = new Student("王五", 20, '男', 82, 92, 102);
+
+        studentManager.add(student1);
+        studentManager.add(student2);
+        studentManager.add(student3);
+
+        studentManager.selectSortByAgeDesc();
+    }
 }
