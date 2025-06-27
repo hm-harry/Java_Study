@@ -2,9 +2,7 @@ package com.system.student.hmstudy.test;
 
 import org.junit.Test;
 
-import com.system.student.hmstudy.compare.impl.AgeAscCompare;
-import com.system.student.hmstudy.compare.impl.AgeDescCompare;
-import com.system.student.hmstudy.compare.impl.ChnScoreDescCompare;
+import com.system.student.hmstudy.compare.MyComparator;
 import com.system.student.hmstudy.entity.Student;
 import com.system.student.hmstudy.manager.StudentManager;
 
@@ -112,6 +110,12 @@ public class SystemTest {
         studentManager.add(student2);
         studentManager.add(student3);
 
-        studentManager.selectSortUsingComparator(new ChnScoreDescCompare());
+        // 使用匿名内部类实现比较器
+        studentManager.selectSortUsingComparator(new MyComparator() {
+            @Override
+            public boolean compare(Student stu1, Student stu2) {
+                return stu1.getMathScore() > stu2.getMathScore();
+            }
+        });
     }
 }
