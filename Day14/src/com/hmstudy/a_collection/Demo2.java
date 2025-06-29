@@ -18,11 +18,20 @@ public class Demo2 {
 
         Iterator<String> iterator = c.iterator();
 
-        while (iterator.hasNext()) { // 判断是否有下一个元素
-            System.out.println(iterator.next());
+        ((ArrayList<String>) c).set(1, "333");
+        ((ArrayList<String>) c).set(2, "222");
 
-            c.remove("333");
-        }
+        iterator.next();
+        iterator.next();
+        c.remove("333");
+        c.add("aaa");
+        iterator.next();
+
+        // while (iterator.hasNext()) { // 判断是否有下一个元素
+        //     System.out.println(iterator.next());
+
+        //     // c.remove("333");
+        // }
         
     }
 }
