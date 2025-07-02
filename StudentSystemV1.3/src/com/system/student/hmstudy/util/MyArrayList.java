@@ -1,4 +1,4 @@
-package com.hmstudy.c_util;
+package com.system.student.hmstudy.util;
 
 import java.util.Arrays;
 
@@ -27,7 +27,7 @@ public class MyArrayList<E> {
      * 无参构造器, 但是需要提供初始化容器来保存数据
      */
     public MyArrayList() {
-        elements = new Object[DEFAULT_CAPACITY];
+        this(DEFAULT_CAPACITY);
     }
 
     /**

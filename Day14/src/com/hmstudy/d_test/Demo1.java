@@ -18,6 +18,8 @@ public class Demo1 {
         list2.add(0, "333");
         list2.add("444");
 
+        list.addAll(2, list2);
+
         System.out.println(list);
         System.out.println(list2);
 
