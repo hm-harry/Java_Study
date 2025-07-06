@@ -164,4 +164,117 @@ public class MyLinkedList<E> {
 
         return e;
     }
+
+    /**
+     * 移除第一个元素
+     * @return 移除的元素
+     */
+    public E removeFirst() {
+        Node<E> f = first;
+
+        if (null == f) {
+            throw new NoSuchElementException();
+        }
+
+        Node<E> next = f.next;
+        first = next;
+
+        if (null == next) {
+            last = null;
+        } else {
+            next.prev = null;
+        }
+
+        f.next = null;
+        E e = f.item;
+        f.item = null;
+
+        size--;
+        return e;
+    }
+
+    /**
+     * 删除LinkedList中指定的元素
+     * @param obj 要删除的元素
+     * @return 删除成功返回true，失败返回false
+     */
+    public boolean remove(Object obj) {
+        Node<E> n = first;
+        Node<E> del = null;
+        for (int i = 0; i < size; i++) {
+            if(n.item.equals(obj)) {
+                del = n;
+                break;
+            }
+            n = n.next;
+        }
+
+        if (del == null) {
+            return false;
+        }
+
+        remove(del);
+
+        return true;
+    }
+
+    /**
+     * 删除指定下标的元素
+     * @param index 指定下标位置
+     * @return 被删除的元素
+     */
+    public E remove(int index) {
+        if (index < 0 || index >= size || size == 0) {
+            throw new NoSuchElementException();
+        }
+
+        Node<E> del = null;
+        if (size < (size >> 1)) { // 从前往后找
+            del = first;
+            for (int i = 0; i < index; i++) {
+                del = del.next;
+            }
+        } else { // 从后往前找
+            del = last;
+            for (int i = size - 1; i > index; i--) {
+                del = del.prev;
+            }
+        }
+
+        return remove(del);
+
+    }
+
+    /**
+     * 类内私有化方法，用于删除指定节点
+     * @param node 要删除的节点
+     * @return 被删除的元素，如果删除失败返回null
+     * 
+     */
+    private E remove(Node<E> node) {
+        if (null == node) {
+            return null;
+        }
+
+        if (null == node.prev) { // 第一个节点
+            return removeFirst();
+        } else if (null == node.next) { // 最后一个节点
+            return removeLast();
+        } else { // 中间节点
+            Node <E> prev = node.prev;
+            Node <E> next = node.next;
+            prev.next = next;
+            next.prev = prev;
+
+            E e = node.item;
+            node.prev = null;
+            node.next = null;
+            node.item = null;
+            size--;
+
+            return e;
+        }
+
+    }
+
 }
