@@ -3,7 +3,7 @@ package com.hmstudy.c_file;
 import java.io.File;
 import java.text.SimpleDateFormat;
 
-public class Day6 {
+public class Demo6 {
     public static void main(String[] args) {
         File file = new File("D:\\program\\JAVA\\Java_Study\\Day17\\1.txt");
         long lastModified = file.lastModified();
